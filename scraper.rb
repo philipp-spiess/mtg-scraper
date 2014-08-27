@@ -12,6 +12,7 @@ page.css("a").each do |set|
   if set.text != "../"
     begin
       set_page = Nokogiri::HTML(open("http://mtgimage.com/setname/#{set['href']}"))
+      #set_page = Nokogiri::HTML(open("http://mtgimage.com/setname/magic%202015/"))
 
       total_cards = set_page.css("a").count
       cards = []
@@ -20,9 +21,12 @@ page.css("a").each do |set|
 
         card_title = card.text.split(".").first
         card_image = "http://mtgimage.com/setname/#{set['href']}#{card_title.gsub(' ', '%20')}.hq.jpg"
+        #card_image = "http://mtgimage.com/setname/magic%202015/#{card_title.gsub(' ', '%20')}.hq.jpg"
+
 
         unless cards.include? card_title
-          puts "#{set.text.gsub('/', '')};#{card_title};#{card_image};\n"
+          puts "\"#{set.text.gsub('/', '')}\";\"#{card_title}\";\"#{card_image}\";\n"
+          #puts "\"#{card_title}\";\"#{card_image}\";\n"
 
           cards << card_title
         end
