@@ -6,6 +6,8 @@ page = Nokogiri::HTML(open("http://mtgimage.com/setname/"))
 
 total = page.css("a").count
 
+puts "sep=;\n"
+
 puts "SET;CARD;IMAGE;\n"
 
 page.css("a").each do |set|
