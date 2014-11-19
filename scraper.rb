@@ -27,7 +27,8 @@ page.css("a").each do |set|
 
 
         unless cards.include? card_title
-          puts "\"#{set.text.gsub('/', '')}\";\"#{card_title}\";\"#{card_image}\";\n"
+          card_title_capital = card_title.split(" ").map{ |s| s.capitalize! }.join(" ")
+          puts "\"#{set.text.gsub('/', '')}\";\"#{card_title_capital}\";\"#{card_image}\";\n"
           #puts "\"#{card_title}\";\"#{card_image}\";\n"
 
           cards << card_title
